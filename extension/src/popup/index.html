@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContextFlow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 400px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+        }
+
+        .container {
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .info-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            margin-bottom: 8px;
+        }
+
+        .info-content {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 20px;
+            padding: 5px 12px;
+            font-size: 12px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .button {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        .button:hover {
+            background: rgba(255, 255, 255, 0.35);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .button.primary {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .button.secondary {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .status {
+            text-align: center;
+            font-size: 12px;
+            opacity: 0.7;
+            margin-top: 15px;
+        }
+
+        .conversations {
+            margin-top: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .conversation-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+
+        .platform-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚡ ContextFlow</h1>
+            <p>AI-powered contextual quotes</p>
+        </div>
+
+        <div class="info-box">
+            <div class="info-label">📌 Current Context</div>
+            <div class="info-content">
+                <div><strong>Topics:</strong></div>
+                <div id="topics" style="margin-bottom: 10px;">
+                    <span class="badge">Analyzing...</span>
+                </div>
+                <div><strong>Mood:</strong></div>
+                <div id="mood" style="margin-bottom: 10px;">
+                    <span class="badge">Neutral</span>
+                </div>
+                <div><strong>Intention:</strong></div>
+                <div id="intention" style="margin-bottom: 10px;">
+                    <span class="badge">General</span>
+                </div>
+            </div>
+        </div>
+
+        <button class="button primary" id="refreshBtn">🔄 Refresh from Tab</button>
+        <button class="button secondary" id="quoteBtn">✨ Get Quote</button>
+
+        <div class="status" id="status">Ready to analyze conversations</div>
+
+        <div class="conversations" id="conversations"></div>
+    </div>
+
+    <script type="module" src="/src/popup/index.ts"></script>
+</body>
+</html>

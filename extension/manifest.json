@@ -1,0 +1,48 @@
+{
+    "manifest_version": 3,
+    "name": "ContextFlow - AI Conversation Insights",
+    "version": "1.0.0",
+    "description": "Get AI-powered quotes based on your ChatGPT, Claude, and Gemini conversations",
+    "permissions": ["storage", "tabs", "activeTab"],
+    "host_permissions": [
+        "https://chat.openai.com/*",
+        "https://claude.ai/*",
+        "https://gemini.google.com/*"
+    ],
+    "chrome_url_overrides": {
+        "newtab": "src/newtab/index.html"
+    },
+    "action": {
+        "default_popup": "src/popup/index.html"
+    },
+    "options_ui": {
+        "page": "src/options/index.html",
+        "open_in_tab": true
+    },
+    "background": {
+        "service_worker": "src/background/index.ts",
+        "type": "module"
+    },
+    "icons": {
+        "16": "public/icons/icon-16.svg",
+        "48": "public/icons/icon-48.svg",
+        "128": "public/icons/icon-128.svg"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://chat.openai.com/*",
+                "https://claude.ai/*",
+                "https://gemini.google.com/*"
+            ],
+            "js": ["src/content/index.ts"],
+            "run_at": "document_end"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": ["public/icons/*"],
+            "matches": ["<all_urls>"]
+        }
+    ]
+}

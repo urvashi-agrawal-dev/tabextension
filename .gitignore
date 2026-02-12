@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+extension/node_modules/
+
+# Build outputs
+extension/dist/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment files
+.env
+.env.local
+
+# Backup files
+*.bak
